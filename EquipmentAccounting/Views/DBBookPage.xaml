@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EquipmentAccounting.Views.DBBookPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Barcode" />
+            <Entry Text="{Binding EquipmentNumber}" />
+            <Label Text="Тип оборудования" />
+            <Entry Text="{Binding EquipmentType}" />
+            <Label Text="Местонахождение" />
+            <Entry Text="{Binding EquipmentPlace}" />
+            <Label Text="Комментарий" />
+            <Entry Text="{Binding Commentary}" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Сохранить" Clicked="SaveBook" />
+                <Button Text="Удалить" Clicked="DeleteBook" />
+                <Button Text="Отмена" Clicked="Cancel" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
