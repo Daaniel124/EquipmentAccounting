@@ -24,37 +24,37 @@ namespace EquipmentAccounting.Views
         protected override void OnAppearing()
         {
             var viewModel = new EquipmentsListViewModel();
-            viewModel.TotalBooksCount = App.DataBase.GetItems().Count();
+            viewModel.TotalEquipmentsCount = App.DataBase.GetItems().Count();
 
             BindingContext = viewModel;
-            booksList.ItemsSource = App.DataBase.GetItems();
+            equipmentsList.ItemsSource = App.DataBase.GetItems();
 
             base.OnAppearing();
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Equipment selectedBook = (Equipment)e.SelectedItem;
-            DBBookPage bookPage = new DBBookPage();
-            bookPage.BindingContext = selectedBook;
-            await Navigation.PushAsync(bookPage);
+            Equipment selectedEquipment = (Equipment)e.SelectedItem;
+            DBEquipmentPage equipmentPage = new DBEquipmentPage();
+            equipmentPage.BindingContext = selectedEquipment;
+            await Navigation.PushAsync(equipmentPage);
         }
 
-        private async void CreateBook(object sender, EventArgs e)
+        private async void CreateEquipment(object sender, EventArgs e)
         {
-            Equipment book = new Equipment();
-            DBBookPage bookPage = new DBBookPage();
-            bookPage.BindingContext = book;
+            Equipment equipment = new Equipment();
+            DBEquipmentPage equipmentPage = new DBEquipmentPage();
+            equipmentPage.BindingContext = equipment;
 
-            await Navigation.PushAsync(bookPage);
+            await Navigation.PushAsync(equipmentPage);
         }
 
         private void OnBindingContextChanged(object sender, EventArgs e)
         {
             var cell = sender as ViewCell;
-            var book = cell?.BindingContext as Equipment;
+            var equipment = cell?.BindingContext as Equipment;
 
-            if (book != null)
+            if (equipment != null)
                 cell.View.BackgroundColor = Color.Green;
             else
                 cell.View.BackgroundColor = Color.Red;

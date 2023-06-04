@@ -11,14 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace EquipmentAccounting.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BookPage : ContentPage
+    public partial class EquipmentsListPage : ContentPage
     {
-        public EquipmentViewModel ViewModel { get; private set; }
-        public BookPage(EquipmentViewModel vm)
+        public EquipmentsListPage()
         {
             InitializeComponent();
-            ViewModel = vm;
-            this.BindingContext = ViewModel;
+            BindingContext = new EquipmentsListViewModel()
+            {
+                Navigation = this.Navigation
+            };
         }
     }
 }

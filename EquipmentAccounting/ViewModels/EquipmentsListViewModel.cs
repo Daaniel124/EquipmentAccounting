@@ -16,79 +16,79 @@ namespace EquipmentAccounting.ViewModels
 {
     public class EquipmentsListViewModel
     {
-        private int totalBooksCount;
-        public int TotalBooksCount
+        private int totalEquipmentsCount;
+        public int TotalEquipmentsCount
         {
-            get { return totalBooksCount; }
+            get { return totalEquipmentsCount; }
             set
             {
-                if (totalBooksCount != value)
+                if (totalEquipmentsCount != value)
                 {
-                    totalBooksCount = value;
-                    OnPropertyChanged("TotalBooksCount");
+                    totalEquipmentsCount = value;
+                    OnPropertyChanged("TotalEquipmentsCount");
                 }
             }
         }
 
-        private int readBooksCount;
-        public int ReadBooksCount
+        private int readEquipmentsCount;
+        public int ReadEquipmentsCount
         {
-            get { return readBooksCount; }
+            get { return readEquipmentsCount; }
             set
             {
-                if (readBooksCount != value)
+                if (readEquipmentsCount != value)
                 {
-                    readBooksCount = value;
-                    OnPropertyChanged("ReadBooksCount");
+                    readEquipmentsCount = value;
+                    OnPropertyChanged("ReadEquipmentsCount");
                 }
             }
         }
 
-        private int unreadBooksCount;
-        public int UnreadBooksCount
+        private int unreadEquipmentsCount;
+        public int UnreadEquipmentsCount
         {
-            get { return unreadBooksCount; }
+            get { return unreadEquipmentsCount; }
             set
             {
-                if (unreadBooksCount != value)
+                if (unreadEquipmentsCount != value)
                 {
-                    unreadBooksCount = value;
-                    OnPropertyChanged("UnreadBooksCount");
+                    unreadEquipmentsCount = value;
+                    OnPropertyChanged("UnreadEquipmentsCount");
                 }
             }
         }
-        private void UpdateBooksCounts()
+        private void UpdateEquipmentsCounts()
         {
-            TotalBooksCount = App.DataBase.GetItems().Count();
+            TotalEquipmentsCount = App.DataBase.GetItems().Count();
         }
 
-        public ObservableCollection<EquipmentViewModel> Books { get; set; }
+        public ObservableCollection<EquipmentViewModel> Equipments { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
-        public ICommand CreateBookCommand { protected set; get; }
-        public ICommand DeleteBookCommand { protected set; get; }
-        public ICommand SaveBookCommand { protected set; get; }
+        public ICommand CreateEquipmentCommand { protected set; get; }
+        public ICommand DeleteEquipmentCommand { protected set; get; }
+        public ICommand SaveEquipmentCommand { protected set; get; }
         public ICommand BackCommand { protected set; get; }
-        EquipmentViewModel selectedBook;
+        EquipmentViewModel selectedEquipment;
         public INavigation Navigation { get; set; }
         public EquipmentsListViewModel()
         {
-            Books = new ObservableCollection<EquipmentViewModel>();
-            CreateBookCommand = new Command(CreateBook);
-            DeleteBookCommand = new Command(DeleteBook);
-            SaveBookCommand = new Command(SaveBookAsync);
+            Equipments = new ObservableCollection<EquipmentViewModel>();
+            CreateEquipmentCommand = new Command(CreateEquipment);
+            DeleteEquipmentCommand = new Command(DeleteEquipment);
+            SaveEquipmentCommand = new Command(SaveEquipment);
             BackCommand = new Command(Back);
         }
-        public EquipmentViewModel SelectedBook
+        public EquipmentViewModel SelectedEquipment
         {
-            get { return selectedBook; }
+            get { return selectedEquipment; }
             set
             {
-                if (selectedBook != value)
+                if (selectedEquipment != value)
                 {
-                    EquipmentViewModel tempBook = value;
-                    selectedBook = null;
-                    OnPropertyChanged("SelectedBook");
-                    Navigation.PushAsync(new BookPage(tempBook));
+                    EquipmentViewModel tempEquipment = value;
+                    selectedEquipment = null;
+                    OnPropertyChanged("SelectedEquipment");
+                    Navigation.PushAsync(new EquipmentPage(tempEquipment));
                 }
             }
         }
@@ -98,43 +98,32 @@ namespace EquipmentAccounting.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-        private void CreateBook()
+        private void CreateEquipment()
         {
-            Navigation.PushAsync(new BookPage(new EquipmentViewModel() { ListViewModel = this }));
+            Navigation.PushAsync(new EquipmentPage(new EquipmentViewModel() { ListViewModel = this }));
         }
         private void Back()
         {
             Navigation.PopAsync();
         }
-        private void SaveBookAsync(object bookObject)
+        private void SaveEquipment(object equipmentObject)
         {
-            EquipmentViewModel book = bookObject as EquipmentViewModel;
-            if (book != null && book.IsValid && !Books.Contains(book))
+            EquipmentViewModel equipment = equipmentObject as EquipmentViewModel;
+            if (equipment != null && equipment.IsValid && !Equipments.Contains(equipment))
             {
-                Books.Add(book);
+                Equipments.Add(equipment);
             }
-            SendSheets(bookObject as EquipmentViewModel);
 
             Back();
         }
 
-        async void SendSheets(object dataObject)
+        
+        private void DeleteEquipment(object equipmentObject)
         {
-            var client = new HttpClient();
-            var model = dataObject;
-            var uri = "https://script.google.com/macros/s/AKfycbzum_bRbjihAvEKnolsaT54csNtC0DMUQh0K6LIbN3HrF3L15Po/exec";
-            var jsonString = JsonConvert.SerializeObject(model);
-            var requestContent = new StringContent(jsonString);
-            var result = await client.PostAsync(uri, requestContent);
-            var resultContent = await result.Content.ReadAsStringAsync();
-            var response = JsonConvert.DeserializeObject<ResponseModel>(resultContent);
-        }
-        private void DeleteBook(object bookObject)
-        {
-            EquipmentViewModel book = bookObject as EquipmentViewModel;
-            if (book != null)
+            EquipmentViewModel equipment = equipmentObject as EquipmentViewModel;
+            if (equipment != null)
             {
-                Books.Remove(book);
+                Equipments.Remove(equipment);
             }
             Back();
         }

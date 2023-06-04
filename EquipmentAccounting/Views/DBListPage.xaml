@@ -4,7 +4,7 @@
              x:Class="EquipmentAccounting.Views.DBListPage">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="booksList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
+            <ListView x:Name="equipmentsList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -31,13 +31,13 @@
             <StackLayout Orientation="Vertical">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Общее количество оборудования: " />
-                    <Label Text="{Binding TotalBooksCount}" />
+                    <Label Text="{Binding TotalEquipmentsCount}" />
                 </StackLayout>
 
             </StackLayout>
 
             <Button Text="Добавить" 
-                Clicked="CreateBook"
+                Clicked="CreateEquipment"
                 BackgroundColor="#ADD8E6"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="EndAndExpand"

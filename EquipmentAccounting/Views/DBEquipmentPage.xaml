@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EquipmentAccounting.Views.DBBookPage">
+             x:Class="EquipmentAccounting.Views.DBEquipmentPage">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Barcode" />
@@ -17,6 +17,7 @@
                 <Button Text="Удалить" Clicked="DeleteBook" />
                 <Button Text="Отмена" Clicked="Cancel" />
             </StackLayout>
+            <Label x:Name="ResultLabel" IsVisible="false"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

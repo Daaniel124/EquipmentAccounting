@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EquipmentAccounting.Views.BookPage">
+             x:Class="EquipmentAccounting.Views.EquipmentPage">
     <StackLayout>
-        <StackLayout x:Name="bookStack">
+        <StackLayout x:Name="equipmentStack">
             <Label Text="Barcode" />
             <Entry Text="{Binding EquipmentNumber}" FontSize="Medium" />
             <Label Text="Тип оборудования" />
@@ -16,11 +16,11 @@
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Button
                 Text="Добавить"
-                Command="{Binding ListViewModel.SaveBookCommand}"
+                Command="{Binding ListViewModel.SaveEquipmentCommand}"
                 CommandParameter="{Binding}"/>
             <Button
                 Text="Удалить"
-                Command="{Binding ListViewModel.DeleteBookCommand}"
+                Command="{Binding ListViewModel.DeleteEquipmentCommand}"
                 CommandParameter="{Binding}"/>
             <Button
                 Text="Назад"

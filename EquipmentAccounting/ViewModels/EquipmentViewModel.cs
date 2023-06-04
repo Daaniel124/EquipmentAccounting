@@ -10,10 +10,10 @@ namespace EquipmentAccounting.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         EquipmentsListViewModel lvm;
-        public Equipment Book { get; private set; }
+        public Equipment equipment { get; private set; }
         public EquipmentViewModel()
         {
-            Book = new Equipment();
+            equipment = new Equipment();
         }
         public EquipmentsListViewModel ListViewModel
         {
@@ -29,24 +29,24 @@ namespace EquipmentAccounting.ViewModels
         }
         public string EquipmentNumber
         {
-            get { return Book.EquipmentNumber; }
+            get { return equipment.EquipmentNumber; }
             set
             {
-                if (Book.EquipmentNumber != value)
+                if (equipment.EquipmentNumber != value)
                 {
-                    Book.EquipmentNumber = value;
+                    equipment.EquipmentNumber = value;
                     OnPropertyChanged("EquipmentNumber");
                 }
             }
         }
         public string EquipmentType
         {
-            get { return Book.EquipmentType; }
+            get { return equipment.EquipmentType; }
             set
             {
-                if (Book.EquipmentType != value)
+                if (equipment.EquipmentType != value)
                 {
-                    Book.EquipmentType = value;
+                    equipment.EquipmentType = value;
                     OnPropertyChanged("EquipmentType");
                 }
             }
@@ -54,12 +54,12 @@ namespace EquipmentAccounting.ViewModels
 
         public string EquipmentPlace
         {
-            get { return Book.EquipmentPlace; }
+            get { return equipment.EquipmentPlace; }
             set
             {
-                if (Book.EquipmentPlace != value)
+                if (equipment.EquipmentPlace != value)
                 {
-                    Book.EquipmentPlace = value;
+                    equipment.EquipmentPlace = value;
                     OnPropertyChanged("EquipmentPlace");
                 }
             }
@@ -67,12 +67,12 @@ namespace EquipmentAccounting.ViewModels
 
         public string Commentary
         {
-            get { return Book.Commentary; }
+            get { return equipment.Commentary; }
             set
             {
-                if (Book.Commentary != value)
+                if (equipment.Commentary != value)
                 {
-                    Book.Commentary = value;
+                    equipment.Commentary = value;
                     OnPropertyChanged("wasRead");
                 }
             }

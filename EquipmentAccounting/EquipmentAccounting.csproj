@@ -18,13 +18,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\BookPage.xaml">
+    <Compile Update="Views\DBEquipmentPage.xaml.cs">
+      <DependentUpon>DBEquipmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EquipmentsListPage.xaml.cs">
+      <DependentUpon>EquipmentsListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EquipmentPage.xaml.cs">
+      <DependentUpon>EquipmentPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\EquipmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\BooksListPage.xaml">
+    <EmbeddedResource Update="Views\EquipmentsListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DBBookPage.xaml">
+    <EmbeddedResource Update="Views\DBEquipmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DBListPage.xaml">

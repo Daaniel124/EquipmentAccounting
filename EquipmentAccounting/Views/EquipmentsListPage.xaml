@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EquipmentAccounting.Views.BooksListPage">
+             x:Class="EquipmentAccounting.Views.EquipmentsListPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Добавить" Command="{Binding CreateBookCommand}" />
-            <ListView x:Name="booksList" ItemsSource="{Binding Books}"
-                SelectedItem="{Binding SelectedBook, Mode=TwoWay}" HasUnevenRows="True">
+            <Button Text="Добавить" Command="{Binding CreateEquipmentCommand}" />
+            <ListView x:Name="equipmentsList" ItemsSource="{Binding equipment}"
+                SelectedItem="{Binding SelectedEquipment, Mode=TwoWay}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
