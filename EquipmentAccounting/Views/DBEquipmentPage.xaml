@@ -17,7 +17,7 @@
                 <Button Text="Удалить" Clicked="DeleteBook" />
                 <Button Text="Отмена" Clicked="Cancel" />
             </StackLayout>
-            <Label x:Name="ResultLabel" IsVisible="false"/>
+            <Label x:Name="ResultLabel" IsVisible="true"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
